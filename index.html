@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Fahadh Faasil — Cinematic Portfolio</title>
+
+    <!-- Fonts -->
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Swiper -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper@9/swiper-bundle.min.css"
+    />
+
+    <!-- Locomotive Scroll CSS (minimal) -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Poppins:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- data-scroll-container is used by Locomotive -->
+    <div data-scroll-container>
+      <!-- GLASS NAV -->
+      <header
+        class="nav glass"
+        data-scroll
+        data-scroll-sticky
+        data-scroll-target="#hero"
+      >
+        <div class="brand">FAHAD<span>H</span></div>
+        <nav class="nav-links">
+          <a href="#about" data-scroll-to>About</a>
+          <a href="#films" data-scroll-to>Films</a>
+          <a href="#showreel" data-scroll-to>Showreel</a>
+          <a href="#awards" data-scroll-to>Awards</a>
+          <a href="#contact" class="hire" data-scroll-to>Contact</a>
+        </nav>
+      </header>
+
+      <!-- HERO -->
+      <section id="hero" class="hero">
+        <div class="hero-content">
+          <div class="hero-text">
+            <h1>Fahadh Faasil</h1>
+            <p>Actor | Producer | Visionary</p>
+            <a
+              href="https://www.imdb.com/name/nm1335704/"
+              target="_blank"
+              class="btn"
+              >Explore Works</a
+            >
+          </div>
+        </div>
+
+        <div class="hero-gallery">
+          <img
+            src="images/hero.jpeg"
+            alt="Fahadh Faasil"
+            class="hero-img hero-main"
+          />
+          <img
+            src="images/hero2.jpg"
+            alt="Fahadh Faasil"
+            class="hero-img hero-side left"
+          />
+          <img
+            src="images/hero3.jpg"
+            alt="Fahadh Faasil"
+            class="hero-img hero-side right"
+          />
+        </div>
+      </section>
+
+      <!-- ABOUT -->
+      <section id="about" class="section about" data-scroll-section>
+        <div class="wrap">
+          <div class="about-grid">
+            <div class="about-text" data-scroll data-scroll-speed="0.3">
+              <h2>About</h2>
+              <p>
+                Fahadh Faasil (born 8 August 1982) is an award-winning Indian
+                actor and producer known for subtle, layered performances in
+                Malayalam and Indian cinema. He has been recognized for both
+                critical and commercial work and continues to push boundaries
+                with creative performances.
+              </p>
+              <p class="muted">
+                Born: 8 Aug 1982 · Awards: National & State honors
+              </p>
+            </div>
+            <div class="about-image" data-scroll data-scroll-speed="-0.6">
+              <img
+                src="images/portrait.jpeg"
+                alt="Fahadh portrait"
+                loading="lazy"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- REEL -->
+      <section id="showreel" class="showreel">
+        <h2>Showreel</h2>
+        <div class="video-container">
+          <video id="bg-video" autoplay loop playsinline>
+            <source src="videos/showreel_trimmed.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+          <button id="mute-btn"><i class="fas fa-volume-mute"></i></button>
+        </div>
+      </section>
+
+      <!-- FILMOGRAPHY -->
+      <section id="films" class="section films" data-scroll-section>
+        <div class="wrap">
+          <h2>Selected Films</h2>
+          <div class="films-grid">
+            <!-- film card format repeated -->
+            <article class="film-card" data-tilt>
+              <img src="images/maheshinte.jpg" alt="Maheshinte Prathikaaram" />
+              <div class="film-meta">
+                <h3>Maheshinte Prathikaaram</h3>
+                <p class="year">2016</p>
+              </div>
+            </article>
+
+            <article class="film-card" data-tilt>
+              <img
+                src="images/thondimuthal.jpg"
+                alt="Thondimuthalum Driksakshiyum"
+              />
+              <div class="film-meta">
+                <h3>Thondimuthalum Driksakshiyum</h3>
+                <p class="year">2017</p>
+              </div>
+            </article>
+
+            <article class="film-card" data-tilt>
+              <img src="images/takeoff.jpg" alt="Take Off" />
+              <div class="film-meta">
+                <h3>Take Off</h3>
+                <p class="year">2017</p>
+              </div>
+            </article>
+
+            <article class="film-card" data-tilt>
+              <img src="images/joji.jpg" alt="Joji" />
+              <div class="film-meta">
+                <h3>Joji</h3>
+                <p class="year">2021</p>
+              </div>
+            </article>
+
+            <article class="film-card" data-tilt>
+              <img src="images/malik.jpg" alt="Malik" />
+              <div class="film-meta">
+                <h3>Malik</h3>
+                <p class="year">2021</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- AWARDS (Swiper carousel) -->
+      <section id="awards" class="section awards" data-scroll-section>
+        <div class="wrap">
+          <h2>Awards & Press</h2>
+          <div class="swiper awards-swiper">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide glass-card">
+                <h4>National / State Awards</h4>
+                <p>
+                  Recognized for outstanding performances in multiple films.
+                </p>
+              </div>
+              <div class="swiper-slide glass-card">
+                <h4>Critics' Praise</h4>
+                <p>Widely covered by national publications and film critics.</p>
+              </div>
+              <div class="swiper-slide glass-card">
+                <h4>Festival Features</h4>
+                <p>
+                  Films screened at prominent festivals and curated showcases.
+                </p>
+              </div>
+            </div>
+            <!-- pagination -->
+            <div class="swiper-pagination"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACT -->
+      <section id="contact" class="section contact" data-scroll-section>
+        <div class="wrap contact-grid">
+          <div>
+            <h2>Contact</h2>
+            <p class="muted">
+              For casting, interviews, and bookings — reach the agent below.
+            </p>
+            <p><strong>Agent:</strong> Agent Name</p>
+            <p><strong>Email:</strong> agent@example.com</p>
+          </div>
+
+          <form
+            class="contact-form"
+            onsubmit="alert('Demo: message sent'); return false;"
+          >
+            <input name="name" placeholder="Your name" required />
+            <input name="email" type="email" placeholder="Email" required />
+            <textarea
+              name="message"
+              rows="5"
+              placeholder="Message"
+              required
+            ></textarea>
+            <button class="btn btn-primary" type="submit">Send</button>
+          </form>
+        </div>
+      </section>
+
+      <footer class="footer" data-scroll-section>
+        <div class="wrap">
+          <p>© 2025 Fahadh Faasil — curated portfolio demo.</p>
+        </div>
+      </footer>
+    </div>
+    <!-- /data-scroll-container -->
+
+    <!-- Showreel modal -->
+    <div id="modal" class="modal" aria-hidden="true">
+      <div class="modal-inner" role="dialog" aria-label="Showreel player">
+        <button id="closeModal" class="modal-close" aria-label="Close">
+          ✕
+        </button>
+        <div class="modal-media" id="modalMedia">
+          <!-- iframe injected by JS -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Libraries: GSAP, ScrollTrigger, Locomotive, Swiper, Vanilla-tilt -->
+    <script src="https://unpkg.com/gsap@3.12.2/dist/gsap.min.js"></script>
+    <script src="https://unpkg.com/gsap@3.12.2/dist/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js"></script>
+    <script src="https://unpkg.com/swiper@9/swiper-bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.2/vanilla-tilt.min.js"></script>
+
+    <script src="script.js"></script>
+    <script>
+      const video = document.getElementById("showreelVideo");
+      const btn = document.getElementById("muteToggle");
+      const icon = btn.querySelector("i");
+
+      btn.addEventListener("click", () => {
+        if (video.muted) {
+          video.muted = false;
+          icon.classList.remove("fa-volume-mute");
+          icon.classList.add("fa-volume-up");
+        } else {
+          video.muted = true;
+          icon.classList.remove("fa-volume-up");
+          icon.classList.add("fa-volume-mute");
+        }
+      });
+    </script>
+  </body>
+</html>
