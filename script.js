@@ -171,4 +171,143 @@
 
   // Debug log
   console.log("Showreel controller initialized. userMuted:", userMuted);
+  // Scroll to top when clicking the brand logo
+  const brand = document.querySelector(".brand");
+  brand.addEventListener("click", () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  });
 })();
+
+//Form submit code
+const form = document.querySelector("#contactForm");
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const data = {
+    name: document.querySelector("#name").value,
+    email: document.querySelector("#email").value,
+    subject: document.querySelector("#subject").value,
+    message: document.querySelector("#message").value,
+  };
+  const response = await fetch(
+    "https://script.google.com/macros/s/AKfycbxB0aWZQBs1v4oZbxIRr0ufXTTqPzw6BYNiiYrPex5tNm4XIFBSP6TLRMwyw4Tg0v1H/exec",
+    {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    }
+  );
+  const result = await response.json();
+  if (result.success) {
+    alert("Message sent successfully!");
+    form.reset();
+  } else {
+    alert("Error sending message.");
+  }
+});
+document.getElementById("contactForm").addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const status = document.getElementById("form-status");
+  status.textContent = "Sending...";
+
+  const data = {
+    name: document.getElementById("name").value,
+    email: document.getElementById("email").value,
+    message: document.getElementById("message").value,
+  };
+
+  try {
+    const res = await fetch(
+      "https://script.google.com/macros/s/AKfycbwSxcxuSZt_VaK4AN1ftiPDUCCmIeYJpEgyLTtH2OzLM0iVQSNen8sw0JXl55u0H77X/exec",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "text/plain;charset=utf-8",
+        },
+        body: JSON.stringify(data),
+        redirect: "follow",
+      }
+    );
+
+    const resultText = await res.text();
+    const result = JSON.parse(resultText);
+    if (result.success) {
+      status.textContent = "Message sent successfully!";
+      e.target.reset();
+    } else {
+      status.textContent = "Failed to send message.";
+      console.error("Script error:", result.error);
+    }
+  } catch (err) {
+    status.textContent = "Error sending message.";
+    console.error("Fetch error:", err);
+  }
+});
+
+// ====== MOBILE NAV TOGGLE ======
+document.addEventListener("DOMContentLoaded", () => {
+  const menuIcon = document.querySelector(".menu-icon");
+  const navLinks = document.querySelector(".nav-links");
+
+  if (menuIcon && navLinks) {
+    menuIcon.addEventListener("click", () => {
+      menuIcon.classList.toggle("active");
+      navLinks.classList.toggle("active");
+    });
+
+    // Close menu when clicking any link
+    navLinks.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        menuIcon.classList.remove("active");
+        navLinks.classList.remove("active");
+      });
+    });
+  } else {
+    console.warn(
+      "Menu icon or nav links not found. Check class names in HTML."
+    );
+  }
+});
+
+//Nav Animation Mobile
+
+// ====== MOBILE NAV TOGGLE ======
+// ======= MOBILE NAV FIX FOR LOCOMOTIVE =======
+document.addEventListener("DOMContentLoaded", () => {
+  const menuIcon = document.querySelector(".menu-icon");
+  const navLinks = document.querySelector(".nav-links");
+
+  if (!menuIcon || !navLinks) {
+    console.warn("Navbar toggle elements not found in DOM");
+    return;
+  }
+
+  // Flag to prevent double toggling during Locomotive updates
+  let menuOpen = false;
+
+  // Explicit toggle handler
+  function toggleMenu() {
+    menuOpen = !menuOpen;
+    menuIcon.classList.toggle("active", menuOpen);
+    navLinks.classList.toggle("active", menuOpen);
+  }
+
+  menuIcon.addEventListener("click", (e) => {
+    e.preventDefault(); // stops Locomotive link handling
+    e.stopPropagation();
+    toggleMenu();
+  });
+
+  // Close when clicking any link inside nav
+  navLinks.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      menuOpen = false;
+      menuIcon.classList.remove("active");
+      navLinks.classList.remove("active");
+    });
+  });
+
+  console.log("✅ Stable navbar toggle initialized");
+});

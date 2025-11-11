@@ -39,6 +39,9 @@
     />
 
     <link rel="stylesheet" href="style.css" />
+
+    <!--Responsive-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   </head>
   <body>
     <!-- data-scroll-container is used by Locomotive -->
@@ -51,10 +54,18 @@
         data-scroll-target="#hero"
       >
         <div class="brand">FAHAD<span>H</span></div>
+
+        <!-- Hamburger icon for mobile -->
+        <div class="menu-icon">
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+        </div>
+
         <nav class="nav-links">
           <a href="#about" data-scroll-to>About</a>
-          <a href="#films" data-scroll-to>Films</a>
           <a href="#showreel" data-scroll-to>Showreel</a>
+          <a href="#films" data-scroll-to>Films</a>
           <a href="#awards" data-scroll-to>Awards</a>
           <a href="#contact" class="hire" data-scroll-to>Contact</a>
         </nav>
@@ -187,60 +198,60 @@
       </section>
 
       <!-- AWARDS (Swiper carousel) -->
-      <section id="awards" class="section awards" data-scroll-section>
-        <div class="wrap">
-          <h2>Awards & Press</h2>
-          <div class="swiper awards-swiper">
-            <div class="swiper-wrapper">
-              <div class="swiper-slide glass-card">
-                <h4>National / State Awards</h4>
-                <p>
-                  Recognized for outstanding performances in multiple films.
-                </p>
-              </div>
-              <div class="swiper-slide glass-card">
-                <h4>Critics' Praise</h4>
-                <p>Widely covered by national publications and film critics.</p>
-              </div>
-              <div class="swiper-slide glass-card">
-                <h4>Festival Features</h4>
-                <p>
-                  Films screened at prominent festivals and curated showcases.
-                </p>
-              </div>
-            </div>
-            <!-- pagination -->
-            <div class="swiper-pagination"></div>
+      <section id="awards" class="awards-section">
+        <h2>Awards</h2>
+        <div class="awards-grid">
+          <div class="award-item">
+            <h3>Malik</h3>
+            <p>Best Actor – Filmfare Awards South 2022</p>
+          </div>
+          <div class="award-item">
+            <h3>Joji</h3>
+            <p>Best Performance – Kerala State Film Awards 2021</p>
+          </div>
+          <div class="award-item">
+            <h3>Trance</h3>
+            <p>Critics Choice Award – SIIMA 2020</p>
+          </div>
+          <div class="award-item">
+            <h3>Kumbalangi Nights</h3>
+            <p>Film of the Year – Asianet Film Awards 2019</p>
           </div>
         </div>
       </section>
 
+      <!--PRESS-->
+
       <!-- CONTACT -->
-      <section id="contact" class="section contact" data-scroll-section>
-        <div class="wrap contact-grid">
-          <div>
-            <h2>Contact</h2>
-            <p class="muted">
-              For casting, interviews, and bookings — reach the agent below.
+      <section id="contact" class="contact-section">
+        <div class="contact-container">
+          <div class="contact-left">
+            <h2>Contact & Enquiries</h2>
+            <p>
+              For collaborations, press, or professional discussions, please
+              reach out using the form. Our agent will get back to you shortly.
             </p>
-            <p><strong>Agent:</strong> Agent Name</p>
-            <p><strong>Email:</strong> agent@example.com</p>
+            <p class="note">*This form is not for fan messages or greetings.</p>
           </div>
 
-          <form
-            class="contact-form"
-            onsubmit="alert('Demo: message sent'); return false;"
-          >
-            <input name="name" placeholder="Your name" required />
-            <input name="email" type="email" placeholder="Email" required />
-            <textarea
-              name="message"
-              rows="5"
-              placeholder="Message"
-              required
-            ></textarea>
-            <button class="btn btn-primary" type="submit">Send</button>
-          </form>
+          <div class="contact-right">
+            <form id="contactForm">
+              <input type="text" id="name" placeholder="Your Name" required />
+              <input
+                type="email"
+                id="email"
+                placeholder="Your Email"
+                required
+              />
+              <textarea
+                id="message"
+                placeholder="Your Message"
+                required
+              ></textarea>
+              <button type="submit" id="sendBtn">Send Message</button>
+              <p id="form-status"></p>
+            </form>
+          </div>
         </div>
       </section>
 
@@ -271,23 +282,34 @@
     <script src="https://unpkg.com/swiper@9/swiper-bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.2/vanilla-tilt.min.js"></script>
 
-    <script src="script.js"></script>
     <script>
-      const video = document.getElementById("showreelVideo");
-      const btn = document.getElementById("muteToggle");
-      const icon = btn.querySelector("i");
+      document.addEventListener("DOMContentLoaded", () => {
+        const video = document.getElementById("showreel");
+        const btn = document.getElementById("mute-btn");
 
-      btn.addEventListener("click", () => {
-        if (video.muted) {
-          video.muted = false;
-          icon.classList.remove("fa-volume-mute");
-          icon.classList.add("fa-volume-up");
-        } else {
-          video.muted = true;
-          icon.classList.remove("fa-volume-up");
-          icon.classList.add("fa-volume-mute");
+        if (!video || !btn) {
+          console.warn("Video or mute button not found in the DOM.");
+          return;
         }
+
+        // Find the <i> icon inside the button, if it exists
+        const icon = btn.querySelector("i");
+
+        // Safe toggle handler
+        btn.addEventListener("click", () => {
+          const isMuted = (video.muted = !video.muted);
+
+          if (icon) {
+            icon.classList.toggle("fa-volume-up", !isMuted);
+            icon.classList.toggle("fa-volume-mute", isMuted);
+          } else {
+            // fallback if no <i> icon is present — toggle text instead
+            btn.textContent = isMuted ? "🔇" : "🔊";
+          }
+        });
       });
     </script>
+
+    <script src="script.js"></script>
   </body>
 </html>
